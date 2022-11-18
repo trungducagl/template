@@ -1,0 +1,26 @@
+/* layout
+------------------------------------------------------------*/
+body {
+    font-family: $main-fonts;
+    font-size: 1.4rem;
+    color: $main-color;
+    line-height: 1.5;
+    @include sp {
+        min-width: 320px;
+    }
+
+}
+//-------------------------------------------------------
+main {
+    
+}
+
+section {
+    padding: 50px 0;
+
+    @include sp{
+        padding: 30px 0;
+    }
+}
+
+//-------------------------------------------------------

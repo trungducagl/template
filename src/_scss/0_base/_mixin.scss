@@ -1,0 +1,88 @@
+//============================================
+// clearfix
+//============================================
+@mixin clear {
+    *zoom: 1;
+
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+//============================================
+// breakpoint
+//============================================
+@mixin sp {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin tab {
+    @media only screen and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin container ($max-width: unset ){
+    .l-container{
+        width: 100%;
+        max-width: $max-width;
+        margin: 0 auto;
+        @content;
+    }
+}
+
+@mixin column($gap:0){
+    .l-column{
+        display: flex;
+        flex-wrap: wrap;
+        @if $gap != 0{
+            margin-right: -$gap;
+            margin-bottom: -$gap;
+            &__col{
+                margin-right: $gap;
+                margin-bottom: $gap;
+            }
+            
+        }
+
+        @content;
+    }
+}
+
+@mixin ab-center ($top: 50%, $left: 50%){
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate(-50%, -50%);
+    
+}
+
+@mixin fx-center{
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin ab-imgbox($width: 100%, $pb: 100%, $radius){
+    .c-abimgbox{
+        position: relative;
+        width: $width;
+        padding-bottom: $pb;
+        overflow: hidden;
+
+        @if $radius != 0{
+            border-radius: $radius;
+        }
+        @content;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;            
+            @include ab-center();
+            
+        }
+    }
+}
