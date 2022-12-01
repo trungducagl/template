@@ -26,63 +26,83 @@
     }
 }
 
-@mixin container ($max-width: unset ){
-    .l-container{
-        width: 100%;
-        max-width: $max-width;
-        margin: 0 auto;
-        @content;
-    }
-}
 
-@mixin column($gap:0){
-    .l-column{
-        display: flex;
-        flex-wrap: wrap;
-        @if $gap != 0{
-            margin-right: -$gap;
-            margin-bottom: -$gap;
-            &__col{
-                margin-right: $gap;
-                margin-bottom: $gap;
+@mixin column($gap:0, $gaptab: 0) {
+     
+    display: flex;
+    flex-wrap: wrap;
+    @if $gap != 0 {
+        margin-right: -$gap;
+        margin-bottom: -$gap;
+
+        &__col {
+            margin-right: $gap;
+            margin-bottom: $gap;
+        }
+        
+    }
+
+    @include tab {
+        @if $gaptab != 0 {
+            margin-right: -$gaptab;
+            margin-bottom: -$gaptab;
+    
+            &__col {
+                margin-right: $gaptab;
+                margin-bottom: $gaptab;
             }
             
         }
-
-        @content;
     }
-}
 
-@mixin ab-center ($top: 50%, $left: 50%){
-    position: absolute;
-    top: $top;
-    left: $left;
-    transform: translate(-50%, -50%);
+    @content;
     
 }
 
-@mixin fx-center{
-    justify-content: center;
-    align-items: center;
+
+@mixin ab-center ($xprop : "top", $xv: 50%, $yprop: "left", $yv : 50% , $trf: "-50%, -50%") {
+    position: absolute;
+    #{$xprop}: $xv;
+    #{$yprop}: $yv;
+    transform: translate(#{$trf});
+    
 }
 
-@mixin ab-imgbox($width: 100%, $pb: 100%, $radius){
-    .c-abimgbox{
-        position: relative;
-        width: $width;
-        padding-bottom: $pb;
-        overflow: hidden;
 
-        @if $radius != 0{
-            border-radius: $radius;
-        }
-        @content;
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;            
-            @include ab-center();
-            
-        }
+@mixin text-style ($fz: 14, $lh: 1.5, $ls: 0.02) {
+
+    $ffz: $fz / 10;
+    font-size: #{$ffz}rem;
+    letter-spacing: #{$ls}em;
+    @if ($lh != 1.5) {
+        $lh: $lh / $fz;
+        $lh: round($lh * 10000) / 10000;
     }
+    line-height: $lh;
+
+}
+
+@mixin ab-imgbox($width: 100%, $pb: 100%, $radius: 0, $position: 50% 50%) {
+  
+    position: relative;
+    width: $width;
+    padding-bottom: $pb;
+    overflow: hidden;
+
+    @if $radius != 0 {
+        border-radius: $radius;
+    }
+    @content;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+        object-position: $position;
+        
+    }
+    
 }

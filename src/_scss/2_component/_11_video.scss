@@ -5,12 +5,13 @@ video
 /*
 ------------------------------------------------------------*/
 
-.c-youtube{
+.c-youtubeframe {
     width: 100%;
     position: relative;
     padding-bottom: 56.25%;
     overflow: hidden;
-    iframe{
+
+    iframe {
         height: 100%;
         width: 100%;
         @include ab-center();

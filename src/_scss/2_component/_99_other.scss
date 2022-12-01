@@ -4,3 +4,13 @@ other
 
 /*
 ------------------------------------------------------------*/
+
+.c-customobjectfit {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+
+    img {
+        opacity: 0;
+    }
+}

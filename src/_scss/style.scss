@@ -7,19 +7,6 @@
 @import "0_base/reset";
 @import "0_base/mixin";
 
-.sp-only {
-    display: none;
-}
-@include sp {
-    .pc-only {
-        display: none;
-    }
-
-    .sp-only {
-        display: block;
-    }
-}
-
 /*≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // Layout .l-
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡*/
@@ -44,6 +31,7 @@
 @import "2_component/10_line";
 @import "2_component/11_video";
 @import "2_component/12_slide";
+@import "2_component/98_modal";
 @import "2_component/99_other";
 
 /*≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -56,3 +44,24 @@
 // Utility .u-
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡*/
 @import "0_base/utility";
+
+.c-test {
+    width: 500px;
+    margin: 0 auto;
+
+    &__image {
+        @include ab-imgbox(); }
+
+
+}
+
+.c-youtube {
+    width: 600px;
+}
+
+.p-top {
+    p {
+
+        @include text-style($lh: 55,$ls:0.3);
+    }
+}

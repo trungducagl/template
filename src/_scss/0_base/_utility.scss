@@ -2,3 +2,30 @@
     
 }
 
+
+.u-sponly {
+    display: none;
+}
+@include sp {
+    .u-pconly {
+        display: none;
+    }
+
+    .u-sponly {
+        display: block;
+    }
+}
+
+.u-tabbelow {
+    display: none;
+}
+
+@include tab {
+    .u-pcabove {
+        display: none;
+    }
+
+    .u-tabbelow {
+        display: block;
+    }
+}
