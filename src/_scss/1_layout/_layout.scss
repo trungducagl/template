@@ -3,16 +3,24 @@
 body {
     font-family: $main-fonts;
     font-size: 1.4rem;
-    color: $main-color;
-    line-height: 1.5;
+    font-weight: 300;
+    color: $text-color;
+    line-height: 1;
+    min-height: 100vh;
+    /* mobile viewport bug fix */
+    min-height: -webkit-fill-available;
     @include sp {
         min-width: 320px;
     }
 
 }
+
+html {
+    height: -webkit-fill-available;
+}
 //-------------------------------------------------------
 main {
-    
+    overflow: hidden;
 }
 
 section {
@@ -25,11 +33,23 @@ section {
 
 
 
-.l-container {
+%l-container {
+    width: 100%;
+    margin: 0 auto;
 
 }
 
-.l-container2 {
-    
+.l-container {
+    @extend %l-container;
+
+    &1 {
+        @extend %l-container;
+        max-width: 1200px;
+    }
+
+    &2 {
+        @extend %l-container;
+        max-width: 1920px;
+    }
 }
 //-------------------------------------------------------

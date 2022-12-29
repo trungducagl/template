@@ -4,3 +4,193 @@ form
 
 /*
 ------------------------------------------------------------*/
+
+.c-formstyle1 {
+    label {
+        @include text-style (14, 28);
+        font-feature-settings: "palt";
+        margin-top: 3px;
+        box-sizing: border-box;
+        position: relative;
+
+
+    }
+
+    input,
+    textarea,
+    select {
+        min-height: 35px;
+        @include text-style (12, 15);
+        font-feature-settings: "palt";
+        border: 1px solid #ccc;
+        width: 100%;
+        padding: 8px;
+        transition: border-color 300ms ease;
+        box-sizing: border-box;
+        font-family: $main-fonts;
+
+        &:focus {
+            border-color: #a68a2a;
+        }
+
+        &::placeholder {
+            color: #ccc;
+            font-feature-settings: "palt";
+            @include text-style (12, 15);
+        }
+ 
+    }
+
+    textarea {
+        padding: 11px 8px;
+    }
+
+    select {
+        color: #ccc;
+        background-image:
+            linear-gradient(45deg, transparent 50%, #ccc 50%),
+            linear-gradient(135deg, #ccc 50%, transparent 50%),
+            linear-gradient(to right, transparent, transparent);
+        background-position:
+            calc(100% - 15px) calc(1em + 2px),
+            calc(100% - 10px) calc(1em + 2px),
+            100% 0;
+        background-size:
+            5px 5px,
+            5px 5px,
+            2.5em 100%;
+        background-repeat: no-repeat;
+        appearance: none;
+
+        @include iefix {
+            &::-ms-expand {
+                display: none;
+            }
+        }
+        
+    }
+
+    .c-formgroup {
+        margin-bottom: 25px;
+        width: 100%;
+        display: flex;
+
+        label {
+            width: 166px;
+            flex: none;
+        }
+
+        &__value {
+            flex: 1;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        &__nomargin {
+            display: flex;
+        }
+
+        &__address {
+            width: 100%;
+
+            select {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .c-form {
+        &--w100 {
+            width: 100px;
+            flex: none;
+        }
+
+        &--w130 {
+            width: 130px;
+            flex: none;
+        }
+
+        &__label {
+            &.is-required,
+            &.is-optional {
+                padding-left: 50px;
+    
+                &::before {
+                    position: absolute;
+                    border-radius: 3px;
+                    color: #fff;
+                    left: 0;
+                    top: 3px;
+                    @include text-style (12, 12);
+                    padding: 5px 8px;
+                }
+            }
+    
+            &.is-optional {
+                &::before {
+                    content: "任意";
+                    background-color: #a1a1a1;
+                }
+            }
+    
+            &.is-required {
+                &::before {
+                    background-color: #40a62a;
+                    content: "必須";
+                }
+            }
+        }
+
+        &__submit {
+            width: 270px;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            color: #fff;
+            background-color: $sub-color;
+            @include text-style (16, 20);
+            padding: 10px;
+            border: 0 solid transparent;
+            
+            &:hover,
+            &:focus {
+                opacity: 0.7;
+            }
+        }
+
+        &__addresspost {
+            align-items: center;
+            justify-content: start;
+            margin-left: -4px;
+
+            p {
+                padding-right: 12px;
+            }
+        }
+    }
+    
+    .c-formsubmit {
+        padding-top: 24px;
+    
+    }
+    
+    @include sp {
+        .c-formgroup {
+            margin-bottom: 25px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+
+            label {
+                width: 100%;
+                flex: auto;
+                margin-bottom: 10px;
+            }
+    
+            &__value {
+                flex: auto;
+            }
+    
+        }
+    }
+}

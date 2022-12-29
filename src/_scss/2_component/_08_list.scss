@@ -4,6 +4,155 @@ list
 
 /*
 ------------------------------------------------------------*/
-.c-list1 {
-	
+.c-liststyle1 {
+    background-color: #fff;
+    display: block;
+
+    .c-newslistbox {
+        &__item {
+            border-bottom: 1px solid #ccc;
+            width: 100%;
+            padding: 12px 50px 12px 153px;
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+
+            &:hover {
+                background-color: #f5f5f5;
+            }
+
+        }
+
+        &__time ,
+        &__title {
+            @include text-style (14 ,28);
+            font-feature-settings: "palt";
+        }
+
+        &__time {
+            color: $sub-color;
+            position: absolute;
+            left: 7px;
+            top: 11px;
+            width: 135px;
+            
+        }
+
+        &__url {
+            @include text-style (18 ,28);
+            font-weight: 600;
+            color: $sub-color;
+            position: absolute;
+            right: 9px;
+            top: 48%;
+            width: 30px;
+            text-align: right;
+            transform: translate(0, -50%);
+        }
+
+
+        
+    }
+
+    @include sp {
+        li:first-child {
+            .c-newslistbox {
+                &__item {
+
+                    border-top: 1px solid #ccc;
+                }
+            }
+
+        }
+
+        .c-newslistbox {
+            &__item {
+                padding: 13px 30px 8px 0;
+            }
+
+
+
+            &__time {
+                position: relative;
+                left: unset;
+                top: unset;
+                width: 100%;
+                display: block;
+                @include text-style (12 ,14);
+            }
+
+            &__title {
+                padding-top: 9px;
+                display: block;
+                @include text-style (12 ,20.4);
+            }
+
+            
+            &__url {
+                right: -2px;
+            }
+    
+        }
+    }
+
+}
+
+.c-liststyle2 {
+    display: block;
+
+    .c-newslistbox {
+        &__item {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            padding: 12px 50px 12px 158px;
+        }
+
+        &__time ,
+        &__title {
+            @include text-style (15 ,18);
+            font-feature-settings: "palt";
+            
+        }
+
+        &__time {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 145px;
+            
+        }
+
+        &__url {
+            display: none;
+        }
+        
+    }
+
+    @include sp {
+        .c-newslistbox {
+            &__item {
+                padding: 0;
+            }
+
+            &__time {
+                position: relative;
+                left: unset;
+                top: unset;
+                transform: none;
+                width: 100%;
+                display: block;
+                @include text-style (12 ,12);
+            }
+
+            &__title {
+                padding-top: 10px;
+                display: block;
+                @include text-style (12 ,20);
+                height: 50px;
+            }
+    
+        }
+    }
 }

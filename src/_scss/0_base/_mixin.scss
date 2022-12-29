@@ -1,3 +1,4 @@
+@use "sass:math";
 //============================================
 // clearfix
 //============================================
@@ -26,6 +27,18 @@
     }
 }
 
+@mixin iefix {
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        @content;
+    }
+}
+
+@mixin ios {
+    @supports (-webkit-touch-callout: none) {
+        @content;
+    }
+      
+}
 
 @mixin column($gap:0, $gaptab: 0) {
      
@@ -60,7 +73,7 @@
 }
 
 
-@mixin ab-center ($xprop : "top", $xv: 50%, $yprop: "left", $yv : 50% , $trf: "-50%, -50%") {
+@mixin ab-center ($yprop : "top", $yv: 50%, $xprop: "left", $xv : 50% , $trf: "-50%, -50%") {
     position: absolute;
     #{$xprop}: $xv;
     #{$yprop}: $yv;
@@ -71,12 +84,12 @@
 
 @mixin text-style ($fz: 14, $lh: 1.5, $ls: 0.02) {
 
-    $ffz: $fz / 10;
+    $ffz: math.div($fz , 10);
     font-size: #{$ffz}rem;
     letter-spacing: #{$ls}em;
     @if ($lh != 1.5) {
-        $lh: $lh / $fz;
-        $lh: round($lh * 10000) / 10000;
+        $lh: math.div($lh , $fz);
+        $lh: math.div(round($lh * 10000) , 10000);
     }
     line-height: $lh;
 
