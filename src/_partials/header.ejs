@@ -20,4 +20,31 @@
       <% } %>
     </ul>
   </nav>
+  <div class="c-gnavspbox c-gnavspbtn is-gnavspbtnclick">
+    <span class="c-gnavspbtn__dash c-gnavspbtn__dash1"></span>
+    <span class="c-gnavspbtn__dash c-gnavspbtn__dash2"></span>
+    <span class="c-gnavspbtn__dash c-gnavspbtn__dash3"></span>
+  </div>
 </header>
+<div class="c-headersp">
+  <nav class="c-gnavsp">
+    <ul class="c-gnavsp__1st">
+      <% if (typeof linklists != 'undefined') { %>
+        <% linklists.main && linklists.main.forEach(link => { %>
+          <li class="c-gnavsp__1stitem <%= link.links ? 'c-gnavsp__havechild' : '' %>">
+            <a href="<%= link.url %>"><%= link.title %></a>
+            <% if (link.links) { %>
+              <ul class="c-gnavsp__2nd">
+                <% link.links.forEach(child_link => { %>
+                  <li class="c-gnavsp__2nditem <%= child_link.links ? 'c-gnavsp__havechild' : '' %>">
+                    <a href="<%= child_link.url %>"><%= child_link.title %></a>
+                  </li>
+                <% }) %>
+              </ul>
+            <% } %>
+          </li>
+        <% }) %>
+      <% } %>
+    </ul>
+  </nav>
+</div>

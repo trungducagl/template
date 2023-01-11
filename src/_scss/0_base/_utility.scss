@@ -1,5 +1,7 @@
-.u-font{
-    
+.u-font {
+    &--w500 {
+        font-weight: 500;
+    }
 }
 
 
@@ -12,7 +14,7 @@
     }
 
     .u-sponly {
-        display: block;
+        display: initial;
     }
 }
 
@@ -26,6 +28,11 @@
     }
 
     .u-tabbelow {
-        display: block;
+        display: initial;
     }
+}
+
+.u-stopscrollbody {
+    position: fixed;
+    left: 0;
 }

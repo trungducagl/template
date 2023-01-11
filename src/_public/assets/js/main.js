@@ -82,14 +82,14 @@ function stopScrollBody(){
   
 	if ($('body').hasClass('u-stopscrollbody')){
 	  let currentTop = $('body').css('top');
-	  $('body').css('position', '');
+	//   $('body').css('position', '');
 	  $('body').css('top', '');
 	  $('body').removeClass('u-stopscrollbody');
 	  $('body, html').animate({ scrollTop: parseInt(currentTop, 10) * -1 }, 0);
 	
 	} else {
    
-	  $('body').css('position', 'fixed');
+	//   $('body').css('position', 'fixed');
 	  $('body').css('top', '-' + scrollTop + 'px');
 	  $('body').addClass('u-stopscrollbody');
 	
@@ -127,3 +127,9 @@ $('.c-modal__quit').on('click touch', '.is-click', function(){
 })
 
 // ---------------
+
+var spNavBtn = $('.is-gnavspbtnclick');
+spNavBtn.on('click touch', function(){
+	stopScrollBody()
+	return false;
+})

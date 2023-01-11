@@ -1,19 +1,20 @@
 /* Header
 ------------------------------------------------------------*/
 .c-header {
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.9);
 }
 /* Main menu
 ------------------------------------------------------------*/
 .c-gnav {
-    ul {
-    }
-
     li {
         display: inline-block;
 
@@ -26,4 +27,147 @@
         font-size: 1.6rem;
         text-transform: capitalize;
     }
+}
+// --------------- sp menu --------------------
+.c-headersp {
+    width: 100%;
+    height: 100vh;
+    padding: 70px 20px 20px;
+    background-color: rgb(139, 139, 139);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 300ms ease;
+
+    .u-stopscrollbody & {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+.c-gnavsp {
+    width: 100%;
+    background-color: #fff;
+    
+    &__1st {
+        height: 300px;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    &__1stitem {
+        border-bottom: 1px solid #ccc;
+
+        > a {
+            padding: 15px 0;
+            display: block;
+            box-sizing: border-box;
+        }
+    }
+
+    &__2nd {
+        display: none;
+    }
+
+        
+    &__2nditem {
+        border-top: 1px dashed #ccc;
+
+        > a {
+            padding: 10px 0;
+            display: block;
+            box-sizing: border-box;
+        }
+    }
+
+    // arrow child list
+    &__havechild {
+        > a {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "+";
+                position: absolute;
+                top: 50%;
+                right: 50px;
+                transform: translateY(-50%);
+            }
+        }
+
+        &.is-active
+        > a {
+            &::before {
+                content: "-";
+            }
+        }
+    }
+
+    // button active
+
+    &btn {
+        // 30deg 
+        --navspbtnbox-width: 60px;
+        --navspbtnbox-height: 60px;
+        --navspbtn-inactive: 30px;
+        --navspbtn-dashwidth: 30px;
+        position: relative;
+        width: var(--navspbtnbox-width);
+        height: var(--navspbtnbox-height);
+        background-color: rgb(104, 11, 11);
+        // border-radius: 50%;
+        margin: 10px;
+        cursor: pointer;
+        clip-path: circle(50%);
+
+        &__dash {
+            width: var(--navspbtn-dashwidth);
+            height: 2px;
+            border-radius: 1px;
+            background-color: #fff;
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            
+            transition: all 300ms ease;
+
+            &1 {
+                transform-origin: 0 center;
+                transform: translate(-50%, calc(-50% - calc(var(--navspbtn-inactive) / 2)));
+            }
+
+            &2 {
+                transform: translate(-50%, -50%);
+            }
+
+            &3 {
+                transform-origin: 0 center;
+                transform: translate(-50%, calc(-50% + calc(var(--navspbtn-inactive) / 2)));
+            }
+        }
+
+        .u-stopscrollbody & {
+            &__dash {
+                left: calc(50% + var(--navspbtn-dashwidth) * 0.075);
+
+                &1 {
+                    transform: translate(-50%, calc(-50% - (var(--navspbtn-dashwidth) / 4))) rotate(30deg);
+                }
+
+                &2 {
+                    opacity: 0;
+                }
+
+                &3 {
+                    transform: translate(-50%, calc(-50% + (var(--navspbtn-dashwidth) / 4))) rotate(-30deg);
+                }
+            }
+        }
+    }
+
 }

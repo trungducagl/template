@@ -7,6 +7,7 @@ body {
     color: $text-color;
     line-height: 1;
     min-height: 100vh;
+    width: 100%;
     /* mobile viewport bug fix */
     min-height: -webkit-fill-available;
     @include sp {
@@ -31,25 +32,9 @@ section {
     }
 }
 
-
-
-%l-container {
+.l-container1 {
     width: 100%;
     margin: 0 auto;
-
-}
-
-.l-container {
-    @extend %l-container;
-
-    &1 {
-        @extend %l-container;
-        max-width: 1200px;
-    }
-
-    &2 {
-        @extend %l-container;
-        max-width: 1920px;
-    }
+    max-width: 1200px;
 }
 //-------------------------------------------------------
